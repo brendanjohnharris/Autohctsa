@@ -1,0 +1,4 @@
+name = "autohctsa"
+uuid = "10eb88ab-3e11-4490-b92e-b8fb5c85de83"
+authors = ["brendanjohnharris <brendanjohnharris@gmail.com>"]
+version = "0.1.0"

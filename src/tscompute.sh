@@ -1,0 +1,2 @@
+# The idea is that you'll have one or more time series sitting in the columns of a csv file
+# This shell script will start matlab, calculated the features for each time series and save them to a csv file as well. By choice, hctsa will not preprocess the time series and all hctsa features will be calculated
