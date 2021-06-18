@@ -10,7 +10,7 @@ function tscompute(in, out, hctsa)
     end
     hctsafile = [tempname(folder), '.mat'];
     save(tsfile, 'timeSeriesData', 'labels', 'keywords')
-    
+
     % Run hctsa
     hm = pwd();
     cd(hctsa)
@@ -18,7 +18,7 @@ function tscompute(in, out, hctsa)
     cd(hm)
     TS_Init(tsfile, 'INP_mops_catch22.txt','INP_ops_catch22.txt', false, hctsafile);
     TS_Compute(false, [], [], 'bad', hctsafile, false);
-    
+
     % Save features back to a file
     load(hctsafile, 'TS_DataMat', 'Operations')
     ops = Operations.Name;
@@ -27,9 +27,11 @@ function tscompute(in, out, hctsa)
     if isfile(out)
         delete(out);
     end
+    fprintf(['Attempting to write features to ', out, '...\n'])
     writecell(slra, out);
-    
+
     % Clean up
     delete(hctsafile);
     delete(tsfile);
+    fprintf(['Success!\n'])
 end
