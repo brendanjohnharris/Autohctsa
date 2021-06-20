@@ -43,6 +43,7 @@ This one just wraps the shell script
 """
 function autohctsa(in::String, out::String, hostname::String)
     inn = abspath(in)
+    @assert isfile(inn)
     sh = abspath(@__DIR__, "autohctsa.sh")
     hm = pwd()
     cd(@__DIR__)
