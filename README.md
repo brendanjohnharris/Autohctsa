@@ -1,8 +1,8 @@
 To adapt for different users, job requirements and PBS versions you should only need to edit the `PBS_tscompute.sh` job script, and maybe the qsub command toward the end of `autohctsa.sh`. This has been tested with a local `bash` shell and remote `tcsh`.s
 # autohctsa
 
-The idea is that you want a simple way to calculate _all_ hctsa features on a cluster.
-To do this in a completely automated way:
+The idea is that you want a simple way to calculate _all_ hctsa features for a timeseries, using a remote cluster.
+To do this:
 - Put a small number of time series into a .csv file, each time series occupying a column.
 - Setup an rsa key for ssh to your cluster. For example, for me (bhar9988) on the USyd School of Physics HPC cluster (`headnode.physics.usyd.edu.au`) this would look like (in a local shell):
 ``` 
