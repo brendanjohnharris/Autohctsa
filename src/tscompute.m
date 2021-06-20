@@ -16,7 +16,7 @@ function tscompute(in, out, hctsa)
     cd(hctsa)
     startup
     cd(hm)
-    TS_Init(tsfile, 'INP_mops_catch22.txt','INP_ops_catch22.txt', false, hctsafile);
+    TS_Init(tsfile, 'INP_mops.txt','INP_ops.txt', false, hctsafile);
     TS_Compute(false, [], [], 'bad', hctsafile, false);
 
     % Save features back to a file
