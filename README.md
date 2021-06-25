@@ -5,7 +5,7 @@ The idea is that you want a simple way to calculate _all_ hctsa features for a t
 To do this:
 - Put a small number of time series into a .csv file, each time series occupying a column.
 - Setup an rsa key for ssh to your cluster. For example, for me (bhar9988) on the USyd School of Physics HPC cluster (`headnode.physics.usyd.edu.au`) this would look like (in a local shell):
-``` 
+```
 ssh-keygen
 [enter]
 [enter]
