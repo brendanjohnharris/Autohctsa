@@ -47,9 +47,12 @@ function autohctsa(in::String, out::String, hostname::String)
     sh = abspath(@__DIR__, "autohctsa.sh")
     hm = pwd()
     cd(@__DIR__)
-    in = replace(in, "\\"=>"/")
+    in = replace(inn, "\\"=>"/")
     out = replace(out, "\\"=>"/")
+    @assert isfile(inn) && isfile(sh)
+    @info "Submitting: $inn\n to: $out\n on: $hostname\n with: $sh\n"
     try
+        run(`dos2unix $sh`)
         shcmd = `"$sh" -i "$inn" -o "$out" -h "$hostname"`
         run(shcmd)
     catch e

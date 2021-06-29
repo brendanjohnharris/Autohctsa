@@ -1,5 +1,5 @@
 #!/bin/tcsh
-#PBS -N test
+#PBS -N autohctsa
 #PBS -o output.txt
 #PBS -j oe
 #PBS -l select=1:ncpus=1:mem=2GB
