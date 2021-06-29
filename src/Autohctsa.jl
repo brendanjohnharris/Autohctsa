@@ -47,6 +47,8 @@ function autohctsa(in::String, out::String, hostname::String)
     sh = abspath(@__DIR__, "autohctsa.sh")
     hm = pwd()
     cd(@__DIR__)
+    in = replace(in, "\\"=>"/")
+    out = replace(out, "\\"=>"/")
     try
         shcmd = `"$sh" -i "$inn" -o "$out" -h "$hostname"`
         run(shcmd)
