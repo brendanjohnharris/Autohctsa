@@ -2,8 +2,8 @@
 #PBS -N autohctsa
 #PBS -o output.txt
 #PBS -j oe
-#PBS -l select=1:ncpus=1:mem=2GB
-#PBS -l walltime=01:00:00
+#PBS -l select=1:ncpus=1:mem=3GB
+#PBS -l walltime=02:00:00
 #PBS -m ea
 #PBS -M bhar9988@uni.sydney.edu.au
 #PBS -V
