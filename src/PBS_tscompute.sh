@@ -7,9 +7,12 @@
 #PBS -m ea
 #PBS -M bhar9988@uni.sydney.edu.au
 #PBS -V
-module load Matlab2019b
 cd "$PBS_O_WORKDIR"
+echo "$PBS_O_WORKDIR"
 touch "$PBS_JOBID"_log.txt
-matlab -nodisplay -singleCompThread -r "disp(pwd); tscompute('xxinxx', 'xxoutxx', 'xxhctsaxx'); exit"
+echo "Loading Matlab2019b...\n" >& "$PBS_JOBID"_log.txt
+module load Matlab2019b
+echo "Opening matlab...\n" >& "$PBS_JOBID"_log.txt
+matlab -nodisplay -singleCompThread -r "disp(pwd); tscompute('xxinxx', 'xxoutxx', 'xxhctsaxx'); exit" | tee -a "$PBS_JOBID"_log.txt
 echo "Exiting..." >& "$PBS_JOBID"_log.txt
 exit

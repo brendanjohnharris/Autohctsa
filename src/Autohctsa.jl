@@ -52,7 +52,7 @@ function autohctsa(in::String, out::String, hostname::String)
     @assert isfile(inn) && isfile(sh)
     @info "Submitting: $inn\n to: $out\n on: $hostname\n with: $sh\n"
     try
-        run(`dos2unix $sh`)
+        #run(`dos2unix $sh`)
         shcmd = `"$sh" -i "$inn" -o "$out" -h "$hostname"`
         run(shcmd)
     catch e
@@ -65,14 +65,19 @@ end
 """
 This one takes an input file, submits the job to the cluster and saves the result in the remote directory and saves placeholder files locally. Once the remote job is complete, the placeholder files can be retrieved using `retrieve()`.
 """
-function submit(in::String, outfile::String="hctsa_"*match(r"[^_]+(?=\.)", basename(in)).match*".csv"; remotedir=remotedir, hostname=hostname)
+function submit(in::String, outfile::String="hctsa_"*match(r"[^_]+(?=\.)", basename(in)).match*".csv"; remotedir=remotedir, hostname=hostname, replace=false)
     isnothing(remotedir) ? (@error "Please provide an absolute path to a remote directory, or set a default") : nothing
     isnothing(hostname) ? (@error "Please provide a `<user>@<hostname>` or set a default") : nothing
     out = joinpath(remotedir, outfile)
-    autohctsa(in, out, hostname)
     tmp = abspath(dirname(in), splitext(outfile)[1]*".autohctsa")
-    tmpdict = Dict(:hostname=>hostname, :in=>in, :out=>out, :tmp=>tmp)
-    CSV.write(tmp, tmpdict)
+    if isfile(splitext(tmp)[1]*".csv") && !replace
+        @warn "Result file already exists, skipping job"
+    else
+        autohctsa(in, out, hostname)
+        tmpdict = Dict(:hostname=>hostname, :in=>in, :out=>out, :tmp=>tmp)
+        CSV.write(tmp, tmpdict)
+    end
+    return nothing
 end
 
 
