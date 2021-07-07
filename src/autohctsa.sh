@@ -40,5 +40,5 @@ scp "$scrdir/PBS_tscompute.sh" "${hostname}:$dirout/PBS_tscompute.sh"
 scp "$scrdir/tscompute.m" "${hostname}:$dirout/tscompute.m"
 
 # Create job script and submit
-ssh $hostname "cd $dirout/; sed -e "s+xxinxx+$dirout/$basein+g" -e "s+xxoutxx+$outfile+g" -e "s+xxhctsaxx+~/hctsa+g" ./PBS_tscompute.sh > ./PBS_$basein.sh"
+ssh $hostname "cd $dirout/; sed -e "s+xxinxx+$dirout/$basein+g" -e "s+xxoutxx+$outfile+g" -e "s+xxhctsaxx+~/hctsa+g" -e "s+xxidxx+$basein+g" ./PBS_tscompute.sh > ./PBS_$basein.sh"
 ssh $hostname "cd $dirout/; /usr/physics/pbspro/bin/qsub PBS_$basein.sh;"

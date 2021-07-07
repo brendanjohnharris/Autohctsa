@@ -90,7 +90,7 @@ function retrieve(dir::String; remotedir=remotedir, hostname=hostname)
     for (root, dirs, files) in walkdir(dir)
         for f ∈ files
             if splitext(f)[2] == ".autohctsa"
-                D = CSV.File(abspath(root, f)) |> Dict
+                D = CSV.File(abspath(root, f), header=false) |> Dict
                 lookingfor = splitext(basename(f))[1]*".csv"
                 if hostname == D["hostname"] && dirname(remotedir*"/") == dirname(D["out"]) && any(lookingfor .== basename.(remotefs))
                     dest = abspath(root, lookingfor)
