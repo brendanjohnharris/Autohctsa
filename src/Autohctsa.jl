@@ -75,7 +75,7 @@ function submit(in::String, outfile::String="hctsa_"*match(r"[^_]+(?=\.)", basen
     else
         autohctsa(in, out, hostname)
         tmpdict = Dict(:hostname=>hostname, :in=>in, :out=>out, :tmp=>tmp)
-        CSV.write(tmp, tmpdict)
+        CSV.write(tmp, tmpdict; header=false)
     end
     return nothing
 end
@@ -102,7 +102,5 @@ function retrieve(dir::String; remotedir=remotedir, hostname=hostname)
         end
     end
 end
-
-
 
 end
