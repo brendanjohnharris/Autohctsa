@@ -1,4 +1,4 @@
-To adapt for different users, job requirements and PBS versions you should only need to edit the `PBS_tscompute.sh` job script, and maybe the qsub command toward the end of `autohctsa.sh`. This has been tested with a local `bash` shell and remote `tcsh`.s
+To adapt for different users, job requirements and PBS versions you should only need to edit the `PBS_tscompute.sh` job script, and maybe the qsub command toward the end of `autohctsa.sh`. This has been tested with a local `bash` shell and remote `tcsh`.
 # autohctsa
 
 The idea is that you want a simple way to calculate _all_ hctsa features for a timeseries, using a remote cluster.
