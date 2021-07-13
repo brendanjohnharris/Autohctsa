@@ -7,6 +7,7 @@
 #PBS -m ea
 #PBS -M bhar9988@uni.sydney.edu.au
 #PBS -V
+#PBS -q yossarian
 cd "$PBS_O_WORKDIR"
 echo "$PBS_O_WORKDIR"
 touch "$PBS_JOBID"_log.txt
