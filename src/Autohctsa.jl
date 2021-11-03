@@ -28,12 +28,12 @@ function __init__()
     schedule(go)
     g() = istaskdone(go)
     check = timedwait(g, 5)
-    if check != :ok
-        println("")
-        @warn "Could not automaticaly connect to default remote. Please check preferences, and try connecting to `hostname` manually. You might need to set up a key pair so that password authentication is not required."
-    else
-        @info "Automatic connection to default hostname successful!"
-    end
+    # if check != :ok
+    #     println("")
+    #     @warn "Could not automaticaly connect to default remote. Please check preferences, and try connecting to `hostname` manually. You might need to set up a key pair so that password authentication is not required."
+    # else
+    #     @info "Successfully attempted a connection to the default host. Check terminal outpu for connection status."
+    # end
 end
 
 
